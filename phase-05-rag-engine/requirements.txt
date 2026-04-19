@@ -1,0 +1,4 @@
+chromadb==0.4.24
+groq==0.4.2
+sentence-transformers==2.5.1
+python-dotenv==1.0.1
