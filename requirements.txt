@@ -1,0 +1,14 @@
+# Phase 3: Data Ingestion
+playwright==1.42.0
+beautifulsoup4==4.12.3
+
+# Phase 4 & 5: Intelligence & RAG
+chromadb==0.4.24
+groq==0.4.2
+sentence-transformers==2.5.1
+python-dotenv==1.0.1
+
+# Phase 7: Backend Orchestration & Web UI
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+pydantic==2.6.1

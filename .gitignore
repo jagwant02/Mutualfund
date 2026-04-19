@@ -1,0 +1,11 @@
+# Security - CRITICAL
+.env
+
+# Python Environments
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local Vector Databases
+phase-04-chunking-embedding/chroma_db/
