@@ -11,11 +11,8 @@ ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(os.path.join(ROOT_DIR, "phase-05-rag-engine"))
 sys.path.append(os.path.join(ROOT_DIR, "phase-06-guardrails"))
 
-try:
-    from scrubber import scan_query
-    from generator import generate_answer
-except ImportError as e:
-    print(f"Warning: Ensure Phase 5 and Phase 6 folders exist. {e}")
+from scrubber import scan_query
+from generator import generate_answer
 
 app = FastAPI(title="Mutual Fund Assistant MVP")
 
@@ -45,14 +42,7 @@ async def chat_endpoint(request: ChatRequest):
         
     # Step 2: Intelligence Layer (Phase 5)
     print("> Query Clean. Engaging Phase 5 RAG Engine (TryChroma + Groq)...")
-    try:
-        final_answer = generate_answer(user_query)
-    except NameError:
-        # Failsafe for local testing: Since the user lacks Microsoft C++ Tools, the chromadb module
-        # completely fails to install, causing `generate_answer` to remain undefined!
-        final_answer = ("System Warning: Local embedding dependencies (chromadb) failed to compile due to missing Windows C++ Build Tools. "
-                        "This UI is functioning perfectly, but the facts engine requires cloud deployment to fully operate. "
-                        "Please review Phase 9 in your Walkthrough artifact!")
+    final_answer = generate_answer(user_query)
     
     return {"response": final_answer}
 
