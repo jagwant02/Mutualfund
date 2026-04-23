@@ -62,7 +62,7 @@ def generate_answer(user_query: str, fund_filter: str = None) -> str:
         client = Groq(api_key=GROQ_API_KEY)
         
         completion = client.chat.completions.create(
-            model="llama3-8b-8192", # Highly instruction-following open weight model
+            model="llama-3.1-8b-instant", # Highly instruction-following open weight model
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_payload}
